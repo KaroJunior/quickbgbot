@@ -64,6 +64,13 @@ bot.onText(/\/start/, (msg) => {
 
   console.log(`📥 /start from ${userTag}`);
 
+  const keyboard = {
+    inline_keyboard: [
+      [{ text: 'More Tools', url: 'https://kezio.netlify.app' }],
+      [{ text: 'Contact Developer', url: 'https://karojunior.netlify.app' }]
+    ]
+  };
+
   bot.sendMessage(
     msg.chat.id,
     `👋 *Quick BG Bot*
@@ -71,7 +78,10 @@ bot.onText(/\/start/, (msg) => {
 Send an image as a *Document* and I’ll remove the background.
 
 ⚠️ Sending as Photo reduces quality.`,
-    { parse_mode: "Markdown" }
+    {
+      parse_mode: "Markdown",
+      reply_markup: keyboard
+    }
   );
 });
 
